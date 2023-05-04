@@ -53,6 +53,10 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps.react,
         },
+        "@azure/msal-browser": {
+          singleton: true,
+          requiredVersion: deps["@azure/msal-browser"],
+        },
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],

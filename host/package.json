@@ -31,6 +31,8 @@
     "tailwindcss": "^2.0.2"
   },
   "dependencies": {
+    "@azure/msal-browser": "^2.37.0",
+    "@azure/msal-react": "^1.5.7",
     "@babel/runtime": "^7.13.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
