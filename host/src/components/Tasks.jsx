@@ -7,12 +7,14 @@ export default function Tasks(props) {
         {   
             "id": "app1",
             "title": "App 1",
+            "background": "#fff1ef",
             "icon": undefined,
-            "description": "App 1"
+            "description": "A counter app"
         },
         {
             "id": "app2",
             "title": "App 2",
+            "background": "#f1ffef",
             "icon": undefined,
             "description": "App 2"
         }]);
@@ -22,12 +24,12 @@ export default function Tasks(props) {
     }
 
     return (
-        <div className="tasks-container">
+        <div className="tasks-container flex flex-wrap p-6">
             {tasks.map((task, idx) => {
                 return (
-                <div className="task-card" key={idx} onClick={() => props.chooseTab(getAppFromTaskId(task.id))}>
+                <div className="task-card p-5 w-4/12 mx-2" key={idx} onClick={() => props.chooseTab(getAppFromTaskId(task.id))} style={{background: task.background || "#ffffff"}}>
                     <div className="task-title text-base">{task.title}</div>
-                    <div className="task-description text-sm text-slate-900">{task.description}</div>
+                    <div className="task-description text-xs text-gray-800">{task.description}</div>
                 </div>
                 );
             })}

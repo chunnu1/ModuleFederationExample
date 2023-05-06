@@ -24,11 +24,10 @@ msalInstance
   });
 
 const AfterAuth = () => {
-  const { instance, accounts } = useMsal();
-
   const [accessToken,  setAccessToken] = useState("");
-
   const [graphData, setGraphData] = useState(null);
+
+  const { instance, accounts } = useMsal();
 
   const isAuthenticated = useIsAuthenticated();
 
@@ -94,18 +93,26 @@ const AfterAuth = () => {
       });
   }
 
-  const listenForAccessTokenRequest = () => {
-    document.addEventListener("GetAzureAccessTokenEvt", () => {
+  const accessTokenRequestEventHandler = (evt) => {
       const azureTokenEvt = new CustomEvent("AzureAccessTokenEvt", {detail: {access_token: accessToken}});
       console.log("emmitting azure access token");
       document.dispatchEvent(azureTokenEvt);
-    });
+  }
+
+  const listenForAccessTokenRequest = () => {
+    document.addEventListener("GetAzureAccessTokenEvt", accessTokenRequestEventHandler);
   }
 
   useEffect(() => {
     RequestProfileData();
-    listenForAccessTokenRequest();
   },[]);
+
+  useEffect(() => {
+    document.removeEventListener("GetAzureAccessTokenEvt", accessTokenRequestEventHandler);
+    if (accessToken) {
+      listenForAccessTokenRequest();
+    }
+  }, [accessToken]);
 
   
   return <></>
@@ -125,11 +132,6 @@ const BeforeAuth = () => {
 }
 
 export default function App() {
-  // const app1Ref = useRef(null);
-
-  // useEffect(()=> {
-  //   app1Mount(app1Ref.current)
-  // }, []);
 
   const { instance, accounts } = useMsal();
 

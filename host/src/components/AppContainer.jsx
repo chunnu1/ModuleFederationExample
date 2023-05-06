@@ -34,10 +34,7 @@ export const AppFoot = ({ chooseTab }) => {
 
 export const Container = () => {};
 
-import { mount as app1Mount } from "app1/bootloader";
-
 export default function AppContainer(props) {
-//   const [currentLayout, setCurrentLayout] = useState(<div ref={app1Mount} className="app1" />);
 
   const chooseTab = (component) => {    
     setCurrentLayout(component);    
