@@ -1,0 +1,9 @@
+- Crete the UI provided by Deep
+- Pass the token to remote app
+- Authenticate > access_token
+- Get auth0 token from azureAd token
+- use spring boot API's with authentication
+- GET appList > using access_token
+    - Show App list in host app
+    - onClick render remoteApps
+    - remote apps verifiy authentication
