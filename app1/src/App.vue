@@ -5,6 +5,7 @@
     <div>Language: JavaScript</div>
     <div>CSS: Tailwind</div>
     <!-- <div v-if="azureAccessToken" style="color:#ccaa33">{{azureAccessToken}}</div> -->
+    <div v-if="userProfile" >User Name: <span style="color:#ccaa33">{{userProfile.displayName}}</span></div>
     <div v-if="userProfile" >User email: <span style="color:#ccaa33">{{userProfile.userPrincipalName}}</span></div>
     <click-counter/>
   </div>
